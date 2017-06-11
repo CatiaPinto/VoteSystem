@@ -56,9 +56,9 @@ http://localhost:8090/result
 ~~~
 
 This will display the name of the candidate with more votes (the winner), for example:
-
-B
-
+~~~
+The winner is, B! [A=2000, B=8000, C=500, D=5000]
+~~~
 
 
 ## ---- TEST ----
