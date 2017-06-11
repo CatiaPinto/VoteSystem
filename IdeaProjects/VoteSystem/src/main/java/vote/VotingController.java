@@ -14,10 +14,18 @@ public class VotingController {
     Voting voting = new Voting();
     private static final String template = "The winner is, %s!";
 
+    /**
+     * Register /vote endpoint.
+     * Handles Bad and Forbidden requests.
+     * @param candidateName the candidate to vote.
+     * @param voterName the voter that voted.
+     * @return the poll of votes.
+     */
+
     @RequestMapping("/vote")
-    public ResponseEntity<?> voting(@RequestParam(value = "voter") String voterName,
-                                    @RequestParam(value = "candidate") String candidateName ) {
-        if (!voting.voterAreRegistered(voterName)){
+    public ResponseEntity<?> voting(@RequestParam(value = "candidate") String candidateName,
+                                    @RequestParam(value = "voter") String voterName ) {
+        if (!voting.voterIsRegistered(voterName)){
             return new ResponseEntity<Object>("Sorry! You need to register before voting", HttpStatus.FORBIDDEN);
         }
 
@@ -28,16 +36,19 @@ public class VotingController {
         if(!voting.userCanVote(voterName)){
             return new ResponseEntity<Object>("Sorry! You can only vote 3 times", HttpStatus.FORBIDDEN);
         }
-        return new ResponseEntity<Object>("Your vote was successfully registered"
+        return new ResponseEntity<Object>("Your vote was successfully registered "
                 + voting.voteToCandidate(candidateName, voterName), HttpStatus.CREATED);
     }
 
+    /**
+     * Register the /result endpoint.
+     * @return the candidate with more votes.
+     */
     @RequestMapping("/result")
     public ResponseEntity<?> getResult() {
         String winner = voting.getOverallResult(voting.getVotesPoll());
         String pool = Arrays.toString(voting.getVotesPoll().entrySet().toArray());
-        return new ResponseEntity<Object>(
-                String.format(template, winner) + pool, HttpStatus.OK);
+        return new ResponseEntity<Object>(String.format(template, winner) + pool, HttpStatus.OK);
     }
 
 

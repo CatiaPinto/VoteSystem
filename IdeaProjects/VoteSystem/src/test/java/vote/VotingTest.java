@@ -33,14 +33,14 @@ public class VotingTest {
 
     @Test
     public void shouldReturnTrueWhenVoterAOnlyVotedOnce() {
-        voting.voterAreRegistered(voter);
+        voting.voterIsRegistered(voter);
         voting.voteToCandidate(candidateA, voter);
         assertTrue(this.voting.userCanVote(voter));
     }
 
     @Test
     public void shouldReturnFalseWhenVoterVotes3Times() {
-        voting.voterAreRegistered(voter);
+        voting.voterIsRegistered(voter);
         voting.voteToCandidate(candidateA, voter);
         voting.voteToCandidate(candidateA, voter);
         voting.voteToCandidate(candidateA, voter);
@@ -49,7 +49,7 @@ public class VotingTest {
 
     @Test
     public void shouldReturnFalseWhenVoterVotes1TimesCandidateAPlusTimeCandidateB() {
-        voting.voterAreRegistered(voter);
+        voting.voterIsRegistered(voter);
         voting.voteToCandidate(candidateA, voter);
         voting.voteToCandidate(candidateA, voter);
         voting.voteToCandidate(candidateB, voter);
