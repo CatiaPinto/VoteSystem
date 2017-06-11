@@ -14,7 +14,7 @@ To build and run a project artifact, you can type the following:
 $ mvn package
 
 $ java -jar target/my-vote-system-0.1.0.jar
-
+       or
 $ mvn spring-boot:run
 ~~~
 
