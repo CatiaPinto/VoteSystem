@@ -14,8 +14,8 @@ public class VotingTest {
 
     private static Map<String, Integer> poll = new HashMap();
     private static String voter = "voterR";
-    private static String candidateA = "candidateA";
-    private static String candidateB = "candidateB";
+    private static String candidateA = "A";
+    private static String candidateB = "B";
 
     static {
         poll.put("A", 8000000);
