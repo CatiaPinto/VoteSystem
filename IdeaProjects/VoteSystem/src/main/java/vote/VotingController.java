@@ -14,14 +14,6 @@ public class VotingController {
     Voting voting = new Voting();
     private static final String template = "The winner is, %s!";
 
-    /**
-     * Register /vote endpoint.
-     * Handles Bad and Forbidden requests.
-     * @param candidateName the candidate to vote.
-     * @param voterName the voter that voted.
-     * @return the poll of votes.
-     */
-
     @RequestMapping("/vote")
     public ResponseEntity<?> voting(@RequestParam(value = "candidate") String candidateName,
                                     @RequestParam(value = "voter") String voterName ) {
@@ -40,10 +32,6 @@ public class VotingController {
                 + voting.voteToCandidate(candidateName, voterName), HttpStatus.CREATED);
     }
 
-    /**
-     * Register the /result endpoint.
-     * @return the candidate with more votes.
-     */
     @RequestMapping("/result")
     public ResponseEntity<?> getResult() {
         String winner = voting.getOverallResult(voting.getVotesPoll());

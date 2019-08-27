@@ -7,9 +7,6 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by capi on 10/06/2017.
- */
 public class VotingTest {
 
     private static Map<String, Integer> poll = new HashMap();
